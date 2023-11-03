@@ -58,14 +58,17 @@ impl PluginManager {
         let constructor: Symbol<PluginCreate> = lib.get(PLUGIN_CREATE_SYMBOL).unwrap();
 
 		println!("Found symbol {:?}",PLUGIN_CREATE_SYMBOL);
-        let boxed_raw = constructor();
+        let wrapper = constructor();
 		println!("Got plugin");
-		let boxed_raw = boxed_raw as *mut dyn Any;
+		(wrapper.on_load)(wrapper.ptr);
+		(wrapper.on_load)(wrapper.ptr);
+		(wrapper.on_load)(wrapper.ptr);
+		(wrapper.on_load)(wrapper.ptr);
 		println!("Finding symbol {:?}",PLUGIN_CREATE_SYMBOL);
-        let plugin = Box::from_raw(boxed_raw);
-        println!("Loaded plugin: {}", plugin.name());
-        plugin.on_plugin_load();
-        self.plugins.push(plugin);
+        //let plugin = Box::from_raw(boxed_raw);
+        //println!("Loaded plugin: {}", plugin.name());
+        //plugin.on_plugin_load();
+        //self.plugins.push(plugin);
     }
 
     pub fn unload(&mut self) {
@@ -73,7 +76,7 @@ impl PluginManager {
 
         for plugin in self.plugins.drain(..) {
             println!("Firing on_plugin_unload for {:?}", plugin.name());
-            plugin.on_plugin_unload();
+            //plugin.on_plugin_unload();
         }
 
         for lib in self.loaded_libraries.drain(..) {
