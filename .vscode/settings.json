@@ -1,0 +1,23 @@
+{
+	"git.ignoredRepositories": [
+		"${workspaceFolder}/cpp/deps/boost"
+	],
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/target": true,
+		"**/build": false,
+		"**/install": false,
+		"**/deps": false,
+	},
+	"files.associations": {
+		"*.cu": "cpp",
+		"*.cs": "csharp",
+		"*.json": "jsonc",
+		"ostream": "cpp"
+	}
+}

@@ -1,0 +1,3 @@
+[submodule "boost"]
+	path = cpp/deps/boost
+	url = https://github.com/boostorg/boost.git

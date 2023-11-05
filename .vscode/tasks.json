@@ -1,0 +1,54 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "configure",
+			"type": "process",
+			"command": "cmake",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"args": [
+				"-S", ".", 
+				"-B", "build",
+				"-DCMAKE_INSTALL_PREFIX=install"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			}
+		},
+		{
+			"label": "build",
+			"type": "process",
+			"command": "cmake",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"args": [
+				"--build", "build", 
+				"--config", "Debug", 
+				"--target", "INSTALL"
+			],
+			"dependsOn": "configure",
+			"isBuildCommand": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			}
+		}
+	]
+}

@@ -1,0 +1,6 @@
+[workspace]
+members = [
+	"my_devkit_plugin",
+	"my_devkit_plugin_macros",
+	"my_devkit_plugins/my_plugin",
+]
